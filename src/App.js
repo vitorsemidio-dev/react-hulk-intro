@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
 function App() {
-  const [heroes, setHeroes] = useState(['Thor', 'Capitã Mável']);
+  const [heroes, setHeroes] = useState([]);
   const [newHero, setNewHero] = useState('');
 
   function handleAddHero(hero) {
     setHeroes([...heroes, hero]);
     setNewHero('');
   }
+
+  useEffect(() => {
+    const storageHeroes = localStorage.getItem('heroes');
+
+    if (storageHeroes) {
+      setHeroes(JSON.parse(storageHeroes));
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('heroes', JSON.stringify(heroes));
