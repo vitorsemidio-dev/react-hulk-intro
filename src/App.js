@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
+  const [heroes, setHeroes] = useState(['Thor', 'Capitã Mável']);
+
   return (
-    <div className="App">
-      <h1>Hello Hulk</h1>
-    </div>
+    <>
+      <ul>
+        {heroes.map(hero => (
+          <li key={hero}>{hero}</li>
+        ))}
+      </ul>
+    </>
   );
 }
 
