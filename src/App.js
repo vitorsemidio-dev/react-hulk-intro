@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
   const [heroes, setHeroes] = useState(['Thor', 'Capitã Mável']);
@@ -8,6 +8,11 @@ function App() {
     setHeroes([...heroes, hero]);
     setNewHero('');
   }
+
+  useEffect(() => {
+    localStorage.setItem('heroes', JSON.stringify(heroes));
+  }, [heroes]);
+
   return (
     <>
       <ul>
