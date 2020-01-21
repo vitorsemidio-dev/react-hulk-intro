@@ -15,6 +15,8 @@ function App() {
     if (storageHeroes) {
       setHeroes(JSON.parse(storageHeroes));
     }
+
+    return () => {};
   }, []);
 
   useEffect(() => {
