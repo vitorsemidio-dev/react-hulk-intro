@@ -1,13 +1,16 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 
 function App() {
   const [heroes, setHeroes] = useState([]);
   const [newHero, setNewHero] = useState('');
 
-  function handleAddHero(hero) {
-    setHeroes([...heroes, hero]);
-    setNewHero('');
-  }
+  const handleAddHero = useCallback(
+    hero => {
+      setHeroes([...heroes, hero]);
+      setNewHero('');
+    },
+    [heroes]
+  );
 
   useEffect(() => {
     const storageHeroes = localStorage.getItem('heroes');
