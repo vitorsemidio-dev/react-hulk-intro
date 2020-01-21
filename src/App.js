@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 function App() {
   const [heroes, setHeroes] = useState([]);
@@ -23,6 +23,8 @@ function App() {
     localStorage.setItem('heroes', JSON.stringify(heroes));
   }, [heroes]);
 
+  const heroSize = useMemo(() => heroes.length, [heroes]);
+
   return (
     <>
       <ul>
@@ -30,6 +32,8 @@ function App() {
           <li key={hero}>{hero}</li>
         ))}
       </ul>
+      <strong>Você tem {heroSize} heróis</strong>
+      <br />
       <input
         type="text"
         value={newHero}
